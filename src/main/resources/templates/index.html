@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tune Hive</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Itim&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/js/index.js}">
+
+</head>
+
+
+
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+        <!-- CONTENT -->
+        <section class="content">
+            <!-- ALBUM HERO -->
+            <div class="hero">
+                <!-- LEFT: Album -->
+
+                <div class="album-left">
+                    <img th:src="@{/images/song0.png}" class="album-img">
+
+                    <div class="album-info">
+                        <h1>MAJILI</h1>
+                        <p>by Various Artists · 7 songs · 32:35</p>
+                    </div>
+                    <div class="album-buttons">
+                        <button class="play-btn">Play</button>
+                        <i class="fa-regular fa-heart"></i>
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="song-table">
+
+                    <div class="song-row">
+                        <span>1</span>
+                        <span>Majili</span>
+                        <span>Tanishk Bagchi, Faheem Abdullah...</span>
+                        <span>5:00</span>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+
+                    <div class="song-row">
+                        <span>2</span>
+                        <span>Barbad</span>
+                        <span>Talented musicians such as...</span>
+                        <span>5:00</span>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+
+                    <div class="song-row">
+                        <span>3</span>
+                        <span>Tum ho tum</span>
+                        <span>Talented musicians such as...</span>
+                        <span>5:00</span>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+
+                    <div class="song-row">
+                        <span>4</span>
+                        <span>Dhun</span>
+                        <span>Talented musicians such as...</span>
+                        <span>5:00</span>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="song-row">
+                        <span>4</span>
+                        <span>Dhun</span>
+                        <span>Talented musicians such as...</span>
+                        <span>5:00</span>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- YOU MIGHT LIKE -->
+            <h3>You Might Like</h3>
+
+            <div class="album-grid">
+
+                <div class="card" onclick="playSong(0)">
+                    <div class="img-box">
+                        <img th:src="@{/images/song1.jpg}" class="album-img">
+                    </div>
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+
+                <div class="card">
+                    <img th:src="@{/images/song2.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+
+                <div class="card">
+                    <img th:src="@{/images/song3.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+
+                <div class="card">
+                    <img th:src="@{/images/song4.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+                <div class="card">
+                    <img th:src="@{/images/song5.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+                <div class="card">
+                    <img th:src="@{/images/song6.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+                <div class="card">
+                    <img th:src="@{/images/song7.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+            </div>
+            <!-- YOU MIGHT LIKE -->
+            <h3>Top Albums From Same Year</h3>
+
+            <div class="album-grid">
+                <div class="card">
+                    <img th:src="@{/images/song8.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+                <div class="card">
+                    <img th:src="@{/images/song9.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+                <div class="card">
+                    <img th:src="@{/images/song10.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+                <div class="card">
+                    <img th:src="@{/images/song11.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+                <div class="card">
+                    <img th:src="@{/images/song12.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+                <div class="card">
+                    <img th:src="@{/images/song13.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+                <div class="card">
+                    <img th:src="@{/images/song14.jpg}">
+
+                    <p>Latest Hindi songs</p>
+                    <span>2.9k fans</span>
+                </div>
+            </div>
+            <!-- TRENDING -->
+            <h3>Currently Trending Albums</h3>
+
+            <div class="album-grid small">
+                <img th:src="@{/images/song13.jpg}">
+                <img th:src="@{/images/song3.jpg}">
+                <img th:src="@{/images/song6.jpg}">
+                <img th:src="@{/images/song8.jpg}">
+                <img th:src="@{/images/song9.jpg}">
+                <img th:src="@{/images/song4.jpg}">
+                <img th:src="@{/images/song11.jpg}">
+                <img th:src="@{/images/song15.jpg}">
+            </div>
+            <footer class="footer">
+                <div class="footer-top">
+                    <h3>About Tune Hive</h3>
+                    <p>
+                        Tune Hive is a Hindi album released in 2025. There are a total of 7 songs in Tune Hive.
+                        The songs were composed by talented musicians such as Tanishk Bagchi, Faheem Abdullah,
+                        Arslan Nizami, and more.
+                    </p>
+                </div>
+
+                <div class="footer-faq">
+                    <h3>FAQs for Tune Hive</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">When was Tune Hive released ? <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Tune Hive was released in 2025 with a collection of 7 songs.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What are the most popular songs from Tune Hive ? <i
+                                class="fa-solid fa-chevron-down"></i></div>
+                        <div class="faq-answer">
+                            Some popular songs include Saiyaara, Barbad, Tum Ho Tum, and Humsafar.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How can I download songs from the album Tune Hive ? <i
+                                class="fa-solid fa-chevron-down"></i></div>
+                        <div class="faq-answer">
+                            You can download songs from official music platforms or stream them online.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="footer-links">
+
+                    <div>
+                        <h4>Top Artists</h4>
+                        <p>Neha Kakkar</p>
+                        <p>Arijit Singh</p>
+                        <p>Badshah</p>
+                        <p>Ed Sheeran</p>
+                        <p>Shreya</p>
+                        <p>Ghosha</p>
+                        <p>Sanam Pura</p>
+                        <p>Arman malik</p>
+                    </div>
+
+                    <div>
+                        <h4>Top Actors</h4>
+                        <p>Rajini</p>
+                        <p>Vijay</p>
+                        <p>Surya</p>
+                        <p>Allu Arjun</p>
+                        <p>Ravi</p>
+                    </div>
+
+                    <div>
+                        <h4>Devotional Songs</h4>
+                        <p>Krishna</p>
+                        <p>Durga</p>
+                        <p>Hanuman</p>
+                        <p>Gayatri</p>
+                        <p>Durga</p>
+                    </div>
+
+                    <div>
+                        <h4>Language</h4>
+                        <p>Hindi songs</p>
+                        <p>Tamil songs</p>
+                        <p>Telugu songs</p>
+                        <p>Gurarati songs</p>
+                        <p>Malayalam songs</p>
+                        <p>Odia songs</p>
+                    </div>
+                    <div>
+                        <h4>Artist Original</h4>
+                        <p>Zaedan</p>
+                        <p>Dooiyan</p>
+                        <p>Afdgjrj</p>
+                        <p>Badsha</p>
+                        <p>Jagas</p>
+                        <p>Suraj</p>
+                    </div>
+
+                    <div>
+                        <h4>Company</h4>
+                        <p>About us</p>
+                        <p>Culture</p>
+                        <p>Blogs</p>
+                        <p>Jobs</p>
+                        <p>Careers</p>
+                        <p>Press</p>
+                        <p>Privacy</p>
+                        <p>Advertise</p>
+                        <p>Help & Support</p>
+                    </div>
+
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© 2025 Tune Hive Media Limited All rights Reserved</p>
+
+                    <div class="social-icons">
+                        <i class="fa-brands fa-youtube"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-facebook"></i>
+                    </div>
+                </div>
+
+            </footer>
+
+        </section>
+
+
+    </div>
+    <!-- PLAYER -->
+    <footer class="player">
+
+        <div class="controls">
+
+            <i class="fa-solid fa-backward"></i>
+            <i class="fa-solid fa-play"></i>
+            <i class="fa-solid fa-forward"></i>
+
+        </div>
+
+        <div class="progress">
+            0:00 / 0:00
+        </div>
+
+        <div class="player-right">
+
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-volume-high"></i>
+
+        </div>
+
+    </footer>
+    <script>
+        document.querySelectorAll(".faq-item").forEach(item => {
+            item.addEventListener("click", () => {
+                let answer = item.querySelector(".faq-answer");
+
+                // close others (optional)
+                document.querySelectorAll(".faq-answer").forEach(a => {
+                    if (a !== answer) a.style.display = "none";
+                });
+
+                // toggle current
+                answer.style.display =
+                    answer.style.display === "block" ? "none" : "block";
+            });
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.classList.add('sidebar-overlay');
+        document.body.appendChild(overlay);
+
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>

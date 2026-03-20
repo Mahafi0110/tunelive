@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Logged Out</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* SAME BACKGROUND STYLE */
+    background: linear-gradient(135deg, #2c2c54, #b33939, #cd6133);
+    color: white;
+}
+
+/* ===== CARD ===== */
+.logout-card {
+    width: 420px;
+    max-width: 90%;
+    padding: 35px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+}
+
+/* ===== TEXT ===== */
+.logout-card h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.logout-card p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* PRIMARY */
+.login-btn {
+    background: #e6e6e6;
+}
+
+/* SECONDARY */
+.home-btn {
+    background: #bfbfbf;
+}
+
+/* ===================== */
+/* 📱 TABLET */
+/* ===================== */
+@media (max-width: 768px) {
+
+    .logout-card {
+        width: 85%;
+        padding: 30px;
+    }
+
+    .logout-card h2 {
+        font-size: 22px;
+    }
+}
+
+/* ===================== */
+/* 📱 MOBILE */
+/* ===================== */
+@media (max-width: 480px) {
+
+    body {
+        padding: 20px;
+    }
+
+    .logout-card {
+        padding: 25px;
+    }
+
+    .logout-card h2 {
+        font-size: 18px;
+    }
+
+    .logout-card p {
+        font-size: 13px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="logout-card">
+
+    <h2>You have been logged out.</h2>
+
+    <p>Thank you for using Tune Hive Music player. See you soon.</p>
+
+    <button class="btn login-btn" onclick="location.href='/login'">
+        Login again
+    </button>
+
+    <button class="btn home-btn" onclick="location.href='/'">
+        Go to home page
+    </button>
+
+</div>
+
+</body>
+</html>

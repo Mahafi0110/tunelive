@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Player</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ===== BODY ===== */
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: white;
+
+            background: linear-gradient(135deg, #2c2c54, #b33939, #cd6133);
+            background-size: cover;
+        }
+
+        /* ===== CONTAINER ===== */
+        .player-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* ===== ALBUM IMAGE ===== */
+        .album-img {
+            width: 180px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== TITLE ===== */
+        .title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .artist {
+            margin-top: 10px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* ===== PROGRESS ===== */
+        .progress-container {
+            margin: 30px auto;
+            width: 80%;
+        }
+
+        .progress-bar {
+            width: 100%;
+        }
+
+        /* ===== TIME ===== */
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* ===== CONTROLS ===== */
+        .controls {
+            margin-top: 20px;
+        }
+
+        .controls i {
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* ===== VOLUME ===== */
+        .volume {
+            margin-top: 15px;
+        }
+
+        .volume input {
+            width: 100px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* ============================= */
+        /* 📱 MOBILE RESPONSIVE */
+        /* ============================= */
+        @media (max-width: 768px) {
+
+            .album-img {
+                width: 140px;
+            }
+
+            .title {
+                font-size: 18px;
+            }
+
+            .progress-container {
+                width: 95%;
+            }
+
+            .controls i {
+                font-size: 16px;
+            }
+        }
+
+        /* ============================= */
+        /* 📱 SMALL MOBILE */
+        /* ============================= */
+        @media (max-width: 480px) {
+
+            .player-container {
+                padding: 20px 10px;
+            }
+
+            .album-img {
+                width: 120px;
+            }
+
+            .title {
+                font-size: 16px;
+            }
+
+            .artist {
+                font-size: 12px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+        <!-- CONTENT -->
+        <section class="content">
+
+            <div class="player-container">
+
+                <!-- Album -->
+                <img th:src="@{/images/song1.jpg}" class="album-img">
+
+                <!-- Title -->
+                <div class="title">MAJILI</div>
+                <div class="artist">Tanishk Bagchi, Faheem Abdullah, Arslan Irshad Kamil</div>
+
+                <!-- Audio -->
+                <audio id="audio" autoplay>
+                    <source th:src="@{/songs/song2.mp3}" type="audio/mpeg">
+                </audio>
+
+                <!-- Progress -->
+                <div class="progress-container">
+                    <input type="range" id="progress" class="progress-bar" value="0">
+
+                    <div class="time">
+                        <span id="current">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <i class="fa-solid fa-backward"></i>
+                    <i class="fa-solid fa-play" id="playBtn"></i>
+                    <i class="fa-solid fa-forward"></i>
+                    <i class="fa-solid fa-repeat"></i>
+                </div>
+
+                <!-- Volume -->
+                <div class="volume">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <input type="range" id="volume" min="0" max="1" step="0.1">
+                </div>
+
+            </div>
+
+             <footer class="footer">
+                <div class="footer-top">
+                    <h3>About Tune Hive</h3>
+                    <p>
+                        Tune Hive is a Hindi album released in 2025. There are a total of 7 songs in Tune Hive.
+                        The songs were composed by talented musicians such as Tanishk Bagchi, Faheem Abdullah,
+                        Arslan Nizami, and more.
+                    </p>
+                </div>
+                <div class="footer-links">
+
+                    <div>
+                        <h4>Top Artists</h4>
+                        <p>Neha Kakkar</p>
+                        <p>Arijit Singh</p>
+                        <p>Badshah</p>
+                        <p>Ed Sheeran</p>
+                        <p>Shreya</p>
+                        <p>Ghosha</p>
+                        <p>Sanam Pura</p>
+                        <p>Arman malik</p>
+                    </div>
+
+                    <div>
+                        <h4>Top Actors</h4>
+                        <p>Rajini</p>
+                        <p>Vijay</p>
+                        <p>Surya</p>
+                        <p>Allu Arjun</p>
+                        <p>Ravi</p>
+                    </div>
+
+                    <div>
+                        <h4>Devotional Songs</h4>
+                        <p>Krishna</p>
+                        <p>Durga</p>
+                        <p>Hanuman</p>
+                        <p>Gayatri</p>
+                        <p>Durga</p>
+                    </div>
+
+                    <div>
+                        <h4>Language</h4>
+                        <p>Hindi songs</p>
+                        <p>Tamil songs</p>
+                        <p>Telugu songs</p>
+                        <p>Gurarati songs</p>
+                        <p>Malayalam songs</p>
+                        <p>Odia songs</p>
+                    </div>
+                    <div>
+                        <h4>Artist Original</h4>
+                        <p>Zaedan</p>
+                        <p>Dooiyan</p>
+                        <p>Afdgjrj</p>
+                        <p>Badsha</p>
+                        <p>Jagas</p>
+                        <p>Suraj</p>
+                    </div>
+
+                    <div>
+                        <h4>Company</h4>
+                        <p>About us</p>
+                        <p>Culture</p>
+                        <p>Blogs</p>
+                        <p>Jobs</p>
+                        <p>Careers</p>
+                        <p>Press</p>
+                        <p>Privacy</p>
+                        <p>Advertise</p>
+                        <p>Help & Support</p>
+                    </div>
+
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© 2025 Tune Hive Media Limited All rights Reserved</p>
+
+                    <div class="social-icons">
+                        <i class="fa-brands fa-youtube"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-facebook"></i>
+                    </div>
+                </div>
+
+            </footer>
+
+        </section>
+        </div>
+
+
+        <script>
+
+            const audio = document.getElementById("audio");
+            const playBtn = document.getElementById("playBtn");
+            const progress = document.getElementById("progress");
+            const volume = document.getElementById("volume");
+            const current = document.getElementById("current");
+            const duration = document.getElementById("duration");
+
+            /* PLAY / PAUSE */
+            playBtn.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.classList.replace("fa-play", "fa-pause");
+                } else {
+                    audio.pause();
+                    playBtn.classList.replace("fa-pause", "fa-play");
+                }
+            });
+
+            /* UPDATE PROGRESS */
+            audio.addEventListener("timeupdate", () => {
+                progress.value = (audio.currentTime / audio.duration) * 100;
+
+                current.textContent = formatTime(audio.currentTime);
+                duration.textContent = formatTime(audio.duration);
+            });
+
+            /* SEEK */
+            progress.addEventListener("input", () => {
+                audio.currentTime = (progress.value / 100) * audio.duration;
+            });
+
+            /* VOLUME */
+            volume.addEventListener("input", () => {
+                audio.volume = volume.value;
+            });
+
+            /* FORMAT TIME */
+            function formatTime(time) {
+                let min = Math.floor(time / 60);
+                let sec = Math.floor(time % 60);
+                return min + ":" + (sec < 10 ? "0" + sec : sec);
+            }
+
+        </script>
+
+</body>
+
+</html>

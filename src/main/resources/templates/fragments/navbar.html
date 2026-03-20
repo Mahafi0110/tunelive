@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+    <header th:fragment="navbar" class="navbar">
+
+        <!-- NAVBAR -->
+
+        <div class="nav-left">
+
+            <h2 class="logo"><i class="fa-solid fa-trophy trophy-icon"></i>
+                TUNE HIVE</h2>
+            <!-- Hamburger for mobile/tablet -->
+            <!-- Navbar toggle -->
+            <div class="hamburger navbar-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <ul class="menu">
+                <li>Music <i class="fa-solid fa-chevron-down"></i></li>
+                <li>Podcasts <i class="fa-solid fa-chevron-down"></i></li>
+                <!-- <li>Pro <i class="fa-solid fa-chevron-down"></i></li> -->
+                <li>
+                    <a th:href="@{/plans}">
+                        Pro <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="nav-center">
+
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <span>Music Language <i class="fa-solid fa-chevron-down"></i></span>
+            <a th:href="@{/login}">
+                Login <i class="fa-solid fa-chevron-down"></i>
+            </a>
+
+            <span>Sign Up <i class="fa-solid fa-chevron-down"></i></span>
+
+        </div>
+
+    </header>
+
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Itim&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Available Plans</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<style>
+    /* SECTION */
+    .payment-section {
+        position: relative;
+        min-height: 100vh;
+        background: url('./images/bg-music.jpg') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    /* DARK OVERLAY */
+    .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(8px);
+    }
+
+    /* CONTAINER */
+    .payment-container {
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+    }
+
+    /* TITLE */
+    .payment-container h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    /* SUBTEXT */
+    .subtitle {
+        font-size: 0.95rem;
+        color: #cbd5f5;
+        margin-bottom: 25px;
+    }
+
+    /* PLAN TITLE */
+    .payment-container h3 {
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+
+    /* GLASS BOX */
+    .plan-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 25px;
+    }
+
+    /* TEXT */
+    .plan-box p {
+        margin: 10px 0;
+        font-size: 0.95rem;
+    }
+
+    .left p {
+        color: #cbd5f5;
+    }
+
+    .right p {
+        font-weight: 500;
+    }
+
+    /* BUTTON GROUP */
+    .btn-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    /* BUTTON */
+    .btn {
+        padding: 12px 18px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: 0.3s ease;
+    }
+
+    /* PRIMARY */
+    .primary {
+        background: linear-gradient(45deg, #ff4d6d, #ff758c);
+        color: white;
+    }
+
+    .primary:hover {
+        transform: scale(1.05);
+    }
+
+    /* SECONDARY */
+    .secondary {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+    }
+
+    .secondary:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ========================= */
+    /* 📱 RESPONSIVE DESIGN */
+    /* ========================= */
+
+    @media (max-width: 768px) {
+
+        .payment-container h1 {
+            font-size: 1.8rem;
+        }
+
+        .plan-box {
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .right {
+            margin-top: 10px;
+        }
+
+        .btn-group {
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .payment-container {
+            padding: 10px;
+        }
+
+        .payment-container h1 {
+            font-size: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+        }
+
+        .plan-box {
+            padding: 15px;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+        <!-- CONTENT -->
+        <section class="content">
+            <div class="payment-section">
+
+                <div class="overlay"></div>
+
+                <div class="payment-container">
+
+                    <h1>Payment Successful!</h1>
+                    <p class="subtitle">
+                        Your payment for the Pro plan has been successfully processed.
+                        You now have access to all features.
+                    </p>
+                    <h3>Plan Details</h3>
+
+                    <div class="plan-box">
+
+                        <div class="left">
+                            <p>Plan name</p>
+                            <p>Billing type</p>
+                            <p>Amount paid</p>
+                            <p>Next payment date</p>
+                        </div>
+
+                        <div class="right">
+                            <p th:text="${plan}"></p>
+                            <p th:text="${billing}"></p>
+                            <p th:text="${amount}"></p>
+                            <p th:text="${nextDate}"></p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn primary" onclick="location.href='/player'">
+                            Go to Player
+                        </button>
+
+                        <button class="btn secondary" onclick="location.href='/profile'">
+                            View Account Details
+                        </button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* INNER CONTAINER FIX */
+        .profile-container {
+            max-width: 1200px;
+            margin: auto;
+            /* center inside content */
+        }
+
+        /* TITLE */
+        .page-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* GRID */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        /* COLUMN */
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* CARD */
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 20px;
+            border-radius: 16px;
+            width: 100%;
+        }
+
+        /* PROFILE */
+        .profile-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-icon {
+            font-size: 55px;
+        }
+
+        /* TEXT */
+        .label {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .value {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* BUTTONS */
+        .btn-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-group button {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: none;
+        }
+
+        /* DEVICE */
+        .device {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #00d4ff;
+            border-radius: 50%;
+        }
+
+        /* SETTINGS */
+        .setting {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+        }
+
+        /* TOGGLE */
+        .toggle {
+            width: 40px;
+            height: 20px;
+            background: #ccc;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .toggle::after {
+            content: "";
+            width: 18px;
+            height: 18px;
+            background: white;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            border-radius: 50%;
+        }
+
+        /* LOGOUT */
+        .logout {
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+        }
+
+        /* ===================== */
+        /* 📱 TABLET */
+        /* ===================== */
+        @media (max-width: 992px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===================== */
+        /* 📱 MOBILE */
+        /* ===================== */
+        @media (max-width: 600px) {
+
+            .profile-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn-group button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+        <!-- CONTENT -->
+        <section class="content">
+
+            <div class="profile-container">
+
+                <h2 class="page-title">Profile</h2>
+
+                <div class="profile-grid">
+
+                    <!-- LEFT -->
+                    <div class="column">
+
+                        <div class="card">
+                            <h3>Profile</h3>
+
+                            <div class="profile-box">
+                                <i class="fa-regular fa-user user-icon"></i>
+
+                                <div>
+                                    <p class="label">User Name</p>
+                                    <p class="value" th:text="${user.name}">User Name</p>
+
+                                    <p class="label">Email</p>
+                                    <p class="value" th:text="${user.email}">Email</p>
+                                </div>
+
+                            </div>
+
+                            <div class="btn-group">
+                                <button>Edit Profile</button>
+                                <button>Change Password</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3>Subscription</h3>
+
+                            <!-- <p>Plan: <b>Premium</b></p> -->
+                             <p th:text="${user.plan}"></p>
+                            <p>Renewal: Jan 31, 2026</p>
+
+                            <div class="btn-group">
+                                <button>Manage</button>
+                                <button>Payment</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="column">
+
+                        <div class="card">
+                            <h3>Connected Devices</h3>
+
+                            <div class="device">
+                                <span>📱 iPhone</span>
+                                <span class="dot"></span>
+                            </div>
+
+                            <div class="device">
+                                <span>💻 Laptop</span>
+                                <span class="dot"></span>
+                            </div>
+
+                            <div class="device">
+                                <span>🔊 Speaker</span>
+                                <span class="dot"></span>
+                            </div>
+
+                            <div class="btn-group">
+                                <button>Manage</button>
+                                <button>Add</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3>Settings</h3>
+
+                            <div class="setting">
+                                <span>Dark Mode</span>
+                                <div class="toggle"></div>
+                            </div>
+
+                            <div class="setting">
+                                <span>High Quality</span>
+                                <div class="toggle"></div>
+                            </div>
+
+                            <div class="setting">
+                                <span>Wi-Fi Only</span>
+                                <div class="toggle"></div>
+                            </div>
+
+                            <button class="logout" onclick="location.href='/logout'">
+                                Logout
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>
