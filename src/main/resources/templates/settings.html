@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" th:href="@{/css/new.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .settings-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .settings-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #222;
+        }
+
+        .settings-card h3 {
+            font-size: 15px;
+            margin-bottom: 15px;
+            color: #FF0067;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .setting-sub {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 2px;
+        }
+
+        /* Toggle switch */
+        .toggle-switch {
+            position: relative;
+            width: 42px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0;
+            right: 0; bottom: 0;
+            background: #444;
+            border-radius: 22px;
+            transition: 0.3s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .toggle-switch input:checked + .slider {
+            background: #FF0067;
+        }
+
+        .toggle-switch input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        .save-btn {
+            width: 100%;
+            padding: 12px;
+            background: #FF0067;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .save-btn:hover {
+            background: #cc0055;
+        }
+
+        @media (max-width: 576px) {
+            .settings-card {
+                padding: 15px;
+            }
+
+            .setting-label {
+                font-size: 13px;
+            }
+
+            .setting-sub {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="main">
+        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+        <section class="content">
+            <div class="settings-container">
+                <h2 style="margin-bottom: 20px;">Account Settings</h2>
+
+                <!-- Audio Settings -->
+                <div class="settings-card">
+                    <h3><i class="fa-solid fa-volume-high"></i> Audio</h3>
+
+                    <div class="setting-row">
+                        <div>
+                            <p class="setting-label">High Quality Streaming</p>
+                            <p class="setting-sub">Uses more data</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <p class="setting-label">Download Quality</p>
+                            <p class="setting-sub">High quality downloads</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <p class="setting-label">Wi-Fi Only Downloads</p>
+                            <p class="setting-sub">Save mobile data</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="settings-card">
+                    <h3><i class="fa-solid fa-bell"></i> Notifications</h3>
+
+                    <div class="setting-row">
+                        <div>
+                            <p class="setting-label">New Releases</p>
+                            <p class="setting-sub">Get notified about new songs</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <p class="setting-label">Promotions</p>
+                            <p class="setting-sub">Offers and deals</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Privacy -->
+                <div class="settings-card">
+                    <h3><i class="fa-solid fa-shield"></i> Privacy</h3>
+
+                    <div class="setting-row">
+                        <div>
+                            <p class="setting-label">Private Listening</p>
+                            <p class="setting-sub">Hide your activity</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <p class="setting-label">Share Listening Activity</p>
+                            <p class="setting-sub">Let friends see what you play</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="save-btn">Save Settings</button>
+
+            </div>
+        </section>
+    </div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

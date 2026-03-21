@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support</title>
+    <link rel="stylesheet" th:href="@{/css/new.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .help-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .help-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #222;
+        }
+
+        .help-card h3 {
+            color: #FF0067;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .help-card p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #FF0067;
+            color: #fff;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        @media (max-width: 576px) {
+            .help-card {
+                padding: 15px;
+            }
+
+            .help-card h3 {
+                font-size: 14px;
+            }
+
+            .help-card p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="main">
+        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+        <section class="content">
+            <div class="help-container">
+                <h2 style="margin-bottom: 20px;">Help & Support</h2>
+
+                <div class="help-card">
+                    <h3><i class="fa-solid fa-envelope"></i> Contact Us</h3>
+                    <p>Have a question or issue? Reach us at support@tunehive.com and we'll get back to you within 24 hours.</p>
+                    <button class="contact-btn">Send Email</button>
+                </div>
+
+                <div class="help-card">
+                    <h3><i class="fa-solid fa-circle-question"></i> FAQ</h3>
+                    <p>How do I cancel my subscription? Go to Profile → Subscription → Manage → Cancel.</p>
+                </div>
+
+                <div class="help-card">
+                    <h3><i class="fa-solid fa-headphones"></i> Audio Issues</h3>
+                    <p>If you are facing audio issues, try clearing your browser cache or switching to a different browser.</p>
+                </div>
+
+                <div class="help-card">
+                    <h3><i class="fa-solid fa-lock"></i> Account Issues</h3>
+                    <p>If you cannot log in, try using OTP login or contact our support team.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

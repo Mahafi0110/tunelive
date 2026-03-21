@@ -35,9 +35,8 @@ public class PageController {
                           HttpSession session,
                           Model model) {
 
-        session.setAttribute("selectedPlan", plan); // store plan
+        session.setAttribute("selectedPlan", plan);
         model.addAttribute("plan", plan);
-
         return "payment";
     }
 
@@ -50,11 +49,14 @@ public class PageController {
             @RequestParam String expiry,
             @RequestParam String cvv,
             @RequestParam String country,
+            @RequestParam(required = false) String plan,
             Model model,
             HttpSession session) {
 
-        // ✅ get selected plan
-        String plan = (String) session.getAttribute("selectedPlan");
+        // ✅ get plan from form first, then session as backup
+        if (plan == null || plan.isEmpty()) {
+            plan = (String) session.getAttribute("selectedPlan");
+        }
 
         // ✅ save to DB
         User user = new User();
@@ -70,10 +72,10 @@ public class PageController {
 
         userRepo.save(user);
 
-        // store user id for profile
+        // ✅ store user id for profile
         session.setAttribute("userId", user.getId());
 
-        // 🔥 PLAN LOGIC
+        // ✅ PLAN LOGIC
         String billing = "";
         String amount = "";
         String nextDate = "";
@@ -92,7 +94,7 @@ public class PageController {
             nextDate = "Next week";
         }
 
-        // ✅ SEND CORRECT DATA (FIXED)
+        // ✅ send data to success page
         model.addAttribute("plan", plan);
         model.addAttribute("billing", billing);
         model.addAttribute("amount", amount);
@@ -137,7 +139,6 @@ public class PageController {
         }
 
         model.addAttribute("user", user);
-
         return "profile";
     }
 
@@ -146,5 +147,57 @@ public class PageController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/login";
+    }
+
+    // ✅ MY MUSIC PAGE
+    @GetMapping("/my-music")
+    public String myMusic(HttpSession session) {
+
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+
+        if (loggedIn != null && loggedIn) {
+            return "my-music";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    // ✅ HISTORY PAGE
+    @GetMapping("/history")
+    public String history(HttpSession session) {
+
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+
+        if (loggedIn != null && loggedIn) {
+            return "history";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    // ✅ SETTINGS PAGE
+    @GetMapping("/settings")
+    public String settings(HttpSession session) {
+
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+
+        if (loggedIn != null && loggedIn) {
+            return "settings";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    // ✅ HELP PAGE
+    @GetMapping("/help")
+    public String help(HttpSession session) {
+
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+
+        if (loggedIn != null && loggedIn) {
+            return "help";
+        } else {
+            return "redirect:/login";
+        }
     }
 }

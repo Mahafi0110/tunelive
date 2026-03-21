@@ -8,7 +8,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Available Plans</title>
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/new.css}">
 </head>
 <style>
     /* SECTION */
@@ -229,25 +229,7 @@
         </section>
 
     </div>
-    <script>
-               const hamburger = document.querySelector('.hamburger');
-        const sidebar = document.querySelector('.sidebar');
-
-        // Create overlay
-        const overlay = document.createElement('div');
-        overlay.classList.add('sidebar-overlay');
-        document.body.appendChild(overlay);
-
-        hamburger.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-    </script>
+<script th:src="@{/js/main.js}"></script>
 </body>
 
 </html>
