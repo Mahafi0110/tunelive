@@ -116,3 +116,138 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+// play songs
+// ===================== AUDIO PLAYER =====================
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('playBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const progress = document.getElementById('progress');
+const volumeBtn = document.getElementById('volume');
+const current = document.getElementById('current');
+const duration = document.getElementById('duration');
+const playerTitle = document.getElementById('player-title');
+const playerArtist = document.getElementById('player-artist');
+const playerImg = document.getElementById('player-img');
+
+const songs = [
+    { src: '/songs/song1.mp3', title: 'Majili',     artist: 'Various Artists', img: '/images/song0.png' },
+    { src: '/songs/song2.mp3', title: 'Barbad',     artist: 'Various Artists', img: '/images/song1.jpg' },
+    { src: '/songs/song3.mp3', title: 'Tum Ho Tum', artist: 'Various Artists', img: '/images/song2.jpg' },
+    { src: '/songs/song1.mp3', title: 'Dhun',       artist: 'Various Artists', img: '/images/song3.jpg' },
+];
+
+let currentIndex = 0;
+let isPlaying = false;
+
+function formatTime(time) {
+    if (isNaN(time)) return '0:00';
+    let min = Math.floor(time / 60);
+    let sec = Math.floor(time % 60);
+    return min + ':' + (sec < 10 ? '0' + sec : sec);
+}
+
+function updatePlayBtn(playing) {
+    if (!playBtn) return;
+    if (playing) {
+        playBtn.classList.remove('fa-play');
+        playBtn.classList.add('fa-pause');
+    } else {
+        playBtn.classList.remove('fa-pause');
+        playBtn.classList.add('fa-play');
+    }
+}
+
+function playSong(src, title, artist, img) {
+    if (!audio) return;
+
+    const idx = songs.findIndex(s => s.src === src && s.title === title);
+    if (idx !== -1) currentIndex = idx;
+
+    audio.src = src;
+    audio.load();
+    audio.play().then(() => {
+        isPlaying = true;
+        updatePlayBtn(true);
+    }).catch(err => {
+        console.error('Play error:', err);
+    });
+
+    if (playerTitle) playerTitle.textContent = title;
+    if (playerArtist) playerArtist.textContent = artist;
+    if (playerImg) playerImg.src = img;
+}
+
+// Make playSong global so onclick in HTML works
+window.playSong = playSong;
+
+if (audio && playBtn) {
+
+    // Play / Pause toggle
+    playBtn.addEventListener('click', () => {
+        if (!audio.src || audio.src === window.location.href) {
+            // no song loaded yet — load first song
+            playSong(songs[0].src, songs[0].title, songs[0].artist, songs[0].img);
+            return;
+        }
+
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+            updatePlayBtn(false);
+        } else {
+            audio.play();
+            isPlaying = true;
+            updatePlayBtn(true);
+        }
+    });
+
+    // Previous button
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+            const s = songs[currentIndex];
+            playSong(s.src, s.title, s.artist, s.img);
+        });
+    }
+
+    // Next button
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % songs.length;
+            const s = songs[currentIndex];
+            playSong(s.src, s.title, s.artist, s.img);
+        });
+    }
+
+    // Auto play next when song ends
+    audio.addEventListener('ended', () => {
+        currentIndex = (currentIndex + 1) % songs.length;
+        const s = songs[currentIndex];
+        playSong(s.src, s.title, s.artist, s.img);
+    });
+
+    // Update progress bar
+    audio.addEventListener('timeupdate', () => {
+        if (progress && audio.duration) {
+            progress.value = (audio.currentTime / audio.duration) * 100;
+        }
+        if (current) current.textContent = formatTime(audio.currentTime);
+        if (duration) duration.textContent = formatTime(audio.duration);
+    });
+
+    // Seek
+    if (progress) {
+        progress.addEventListener('input', () => {
+            audio.currentTime = (progress.value / 100) * audio.duration;
+        });
+    }
+
+    // Volume
+    if (volumeBtn) {
+        volumeBtn.addEventListener('input', () => {
+            audio.volume = volumeBtn.value;
+        });
+    }
+}

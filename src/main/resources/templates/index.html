@@ -41,7 +41,10 @@
                         <p>by Various Artists · 7 songs · 32:35</p>
                     </div>
                     <div class="album-buttons">
-                        <button class="play-btn">Play</button>
+                        <button class="play-btn"
+                            onclick="playSong('/songs/song1.mp3', 'Majili', 'Various Artists', '/images/song0.png')">
+                            <i class="fa-solid fa-play"></i> Play
+                        </button>
                         <i class="fa-regular fa-heart"></i>
                         <i class="fa-solid fa-gear"></i>
                     </div>
@@ -51,7 +54,9 @@
 
                 <div class="song-table">
 
-                    <div class="song-row">
+                    <div class="song-row"
+                        onclick="playSong('/songs/song1.mp3', 'Majili', 'Various Artists', '/images/song0.png')"
+                        style="cursor:pointer">
                         <span>1</span>
                         <span>Majili</span>
                         <span>Tanishk Bagchi, Faheem Abdullah...</span>
@@ -59,7 +64,9 @@
                         <i class="fa-regular fa-heart"></i>
                     </div>
 
-                    <div class="song-row">
+                    <div class="song-row"
+                        onclick="playSong('/songs/song2.mp3', 'Majili', 'Various Artists', '/images/song0.png')"
+                        style="cursor:pointer">
                         <span>2</span>
                         <span>Barbad</span>
                         <span>Talented musicians such as...</span>
@@ -67,7 +74,9 @@
                         <i class="fa-regular fa-heart"></i>
                     </div>
 
-                    <div class="song-row">
+                    <div class="song-row"
+                        onclick="playSong('/songs/song3.mp1', 'Majili', 'Various Artists', '/images/song0.png')"
+                        style="cursor:pointer">
                         <span>3</span>
                         <span>Tum ho tum</span>
                         <span>Talented musicians such as...</span>
@@ -75,14 +84,18 @@
                         <i class="fa-regular fa-heart"></i>
                     </div>
 
-                    <div class="song-row">
+                    <div class="song-row"
+                        onclick="playSong('/songs/song1.mp3', 'Majili', 'Various Artists', '/images/song0.png')"
+                        style="cursor:pointer">
                         <span>4</span>
                         <span>Dhun</span>
                         <span>Talented musicians such as...</span>
                         <span>5:00</span>
                         <i class="fa-regular fa-heart"></i>
                     </div>
-                    <div class="song-row">
+                    <div class="song-row"
+                        onclick="playSong('/songs/song2.mp3', 'Majili', 'Various Artists', '/images/song0.png')"
+                        style="cursor:pointer">
                         <span>4</span>
                         <span>Dhun</span>
                         <span>Talented musicians such as...</span>
@@ -330,7 +343,7 @@
 
     </div>
     <!-- PLAYER -->
-    <footer class="player">
+    <!-- <footer class="player">
 
         <div class="controls">
 
@@ -351,8 +364,39 @@
 
         </div>
 
-    </footer>
-<script th:src="@{/js/main.js}"></script>
+    </footer> -->
+    <!-- PLAYER -->
+<footer class="player">
+    <div class="player-left">
+        <img id="player-img" src="/images/song.png" style="width:45px;height:45px;border-radius:8px;object-fit:cover;">
+        <div style="margin-left:10px">
+            <p id="player-title" style="font-size:13px;font-weight:500">Select a song</p>
+            <p id="player-artist" style="font-size:11px;color:#aaa">--</p>
+        </div>
+    </div>
+
+    <div class="player-center">
+        <div class="controls">
+            <i class="fa-solid fa-backward" id="prevBtn"></i>
+            <i class="fa-solid fa-play" id="playBtn"></i>
+            <i class="fa-solid fa-forward" id="nextBtn"></i>
+        </div>
+        <div class="progress-bar">
+            <span id="current">0:00</span>
+            <input type="range" id="progress" value="0" min="0" max="100" style="flex:1;accent-color:#FF0067;">
+            <span id="duration">0:00</span>
+        </div>
+    </div>
+
+    <div class="player-right">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-volume-high"></i>
+        <input type="range" id="volume" min="0" max="1" step="0.1" value="1" style="width:80px;accent-color:#FF0067;">
+    </div>
+
+    <audio id="audio"></audio>
+</footer>
+    <script th:src="@{/js/main.js}"></script>
 </body>
 
 </html>
