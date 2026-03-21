@@ -43,11 +43,56 @@
 
 
         <div class="nav-right">
+            <!-- Music Language Dropdown -->
+            <div class="dropdown language-dropdown">
+                <span class="dropdown-toggle">
+                    Music Language <i class="fa-solid fa-chevron-down"></i>
+                </span>
+                <div class="dropdown-menu language-menu">
+                    <div class="language-header">
+                        <p>Pick all the languages you want to listen to</p>
+                    </div>
+                    <div class="language-list">
+                        <label><input type="checkbox" value="hindi"> Hindi</label>
+                        <label><input type="checkbox" value="tamil"> Tamil</label>
+                        <label><input type="checkbox" value="telugu"> Telugu</label>
+                        <label><input type="checkbox" value="malayalam"> Malayalam</label>
+                        <label><input type="checkbox" value="kannada"> Kannada</label>
+                        <label><input type="checkbox" value="bengali"> Bengali</label>
+                        <label><input type="checkbox" value="marathi"> Marathi</label>
+                        <label><input type="checkbox" value="punjabi"> Punjabi</label>
+                        <label><input type="checkbox" value="gujarati"> Gujarati</label>
+                        <label><input type="checkbox" value="odia"> Odia</label>
+                        <label><input type="checkbox" value="english"> English</label>
+                        <label><input type="checkbox" value="korean"> Korean</label>
+                        <label><input type="checkbox" value="spanish"> Spanish</label>
+                        <label><input type="checkbox" value="french"> French</label>
+                        <label><input type="checkbox" value="japanese"> Japanese</label>
+                    </div>
+                    <button class="update-btn">Update</button>
+                </div>
+            </div>
+            <!-- Login Dropdown -->
+            <div class="dropdown login-dropdown">
+                <span class="dropdown-toggle">
+                    Login <i class="fa-solid fa-chevron-down"></i>
+                </span>
+                <div class="dropdown-menu login-menu">
+                    <a th:href="@{/login}"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                    <a th:href="@{/my-music}"><i class="fa-solid fa-music"></i> My Music</a>
+                    <a th:href="@{/profile}"><i class="fa-solid fa-user"></i> My Profile</a>
+                    <a th:href="@{/history}"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                    <a th:href="@{/settings}"><i class="fa-solid fa-gear"></i> Account Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a th:href="@{/help}"><i class="fa-solid fa-circle-question"></i> Help & Support</a>
+                    <a th:href="@{/logout}" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i>
+                        Logout</a>
+                </div>
+            </div>
 
-            <span>Music Language <i class="fa-solid fa-chevron-down"></i></span>
-            <a th:href="@{/login}">
+            <!-- <a th:href="@{/login}">
                 Login <i class="fa-solid fa-chevron-down"></i>
-            </a>
+            </a> -->
 
             <span>Sign Up <i class="fa-solid fa-chevron-down"></i></span>
 

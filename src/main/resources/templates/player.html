@@ -189,7 +189,7 @@
 
             </div>
 
-             <footer class="footer">
+            <footer class="footer">
                 <div class="footer-top">
                     <h3>About Tune Hive</h3>
                     <p>
@@ -278,55 +278,74 @@
             </footer>
 
         </section>
-        </div>
+    </div>
+    <script>
+               const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.classList.add('sidebar-overlay');
+        document.body.appendChild(overlay);
+
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
 
 
-        <script>
+    <script>
 
-            const audio = document.getElementById("audio");
-            const playBtn = document.getElementById("playBtn");
-            const progress = document.getElementById("progress");
-            const volume = document.getElementById("volume");
-            const current = document.getElementById("current");
-            const duration = document.getElementById("duration");
+        const audio = document.getElementById("audio");
+        const playBtn = document.getElementById("playBtn");
+        const progress = document.getElementById("progress");
+        const volume = document.getElementById("volume");
+        const current = document.getElementById("current");
+        const duration = document.getElementById("duration");
 
-            /* PLAY / PAUSE */
-            playBtn.addEventListener("click", () => {
-                if (audio.paused) {
-                    audio.play();
-                    playBtn.classList.replace("fa-play", "fa-pause");
-                } else {
-                    audio.pause();
-                    playBtn.classList.replace("fa-pause", "fa-play");
-                }
-            });
-
-            /* UPDATE PROGRESS */
-            audio.addEventListener("timeupdate", () => {
-                progress.value = (audio.currentTime / audio.duration) * 100;
-
-                current.textContent = formatTime(audio.currentTime);
-                duration.textContent = formatTime(audio.duration);
-            });
-
-            /* SEEK */
-            progress.addEventListener("input", () => {
-                audio.currentTime = (progress.value / 100) * audio.duration;
-            });
-
-            /* VOLUME */
-            volume.addEventListener("input", () => {
-                audio.volume = volume.value;
-            });
-
-            /* FORMAT TIME */
-            function formatTime(time) {
-                let min = Math.floor(time / 60);
-                let sec = Math.floor(time % 60);
-                return min + ":" + (sec < 10 ? "0" + sec : sec);
+        /* PLAY / PAUSE */
+        playBtn.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.classList.replace("fa-play", "fa-pause");
+            } else {
+                audio.pause();
+                playBtn.classList.replace("fa-pause", "fa-play");
             }
+        });
 
-        </script>
+        /* UPDATE PROGRESS */
+        audio.addEventListener("timeupdate", () => {
+            progress.value = (audio.currentTime / audio.duration) * 100;
+
+            current.textContent = formatTime(audio.currentTime);
+            duration.textContent = formatTime(audio.duration);
+        });
+
+        /* SEEK */
+        progress.addEventListener("input", () => {
+            audio.currentTime = (progress.value / 100) * audio.duration;
+        });
+
+        /* VOLUME */
+        volume.addEventListener("input", () => {
+            audio.volume = volume.value;
+        });
+
+        /* FORMAT TIME */
+        function formatTime(time) {
+            let min = Math.floor(time / 60);
+            let sec = Math.floor(time % 60);
+            return min + ":" + (sec < 10 ? "0" + sec : sec);
+        }
+
+    </script>
 
 </body>
 

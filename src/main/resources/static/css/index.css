@@ -576,3 +576,262 @@ body {
         font-size: 12px;
     }
 }
+/* Dropdown base */
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #1a1a2e;
+    border-radius: 10px;
+    padding: 10px 0;
+    min-width: 200px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 999;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Login dropdown links */
+.login-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.login-menu a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.logout-link {
+    color: #ff4d4d !important;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 5px 0;
+}
+
+/* Language dropdown */
+.language-menu {
+    min-width: 280px;
+    padding: 15px;
+}
+
+.language-header p {
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.language-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+}
+
+.language-list label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.language-list input[type="checkbox"] {
+    accent-color: #a855f7;
+}
+
+.update-btn {
+    width: 100%;
+    padding: 8px;
+    background: #a855f7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.update-btn:hover {
+    background: #9333ea;
+}
+/* ===== TABLET VIEW (768px - 1024px) ===== */
+@media (max-width: 1024px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        padding: 10px 15px;
+    }
+
+    .nav-left .menu {
+        display: none;
+    }
+
+    .nav-center {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .nav-right {
+        gap: 10px;
+        font-size: 13px;
+    }
+
+    .language-menu {
+        min-width: 240px;
+        right: 0;
+    }
+
+    .login-menu {
+        right: 0;
+    }
+
+    .dropdown-menu {
+        right: 0;
+        left: auto;
+    }
+}
+
+
+/* ===== MOBILE VIEW (max 767px) ===== */
+@media (max-width: 767px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    /* Top row — logo + hamburger */
+    .nav-left {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-left .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #1a1a2e;
+        padding: 10px 0;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+
+    /* Show menu when hamburger clicked */
+    .nav-left .menu.active {
+        display: flex;
+    }
+
+    .nav-left .menu li {
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        color: #fff;
+        cursor: pointer;
+    }
+
+    /* Search full width */
+    .nav-center {
+        width: 100%;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    /* Right section stacked */
+    .nav-right {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 13px;
+    }
+
+    /* Dropdowns full width on mobile */
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-toggle {
+        width: 100%;
+        padding: 10px 15px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 8px;
+        justify-content: space-between;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        position: relative;
+        top: 0;
+        right: auto;
+        margin-top: 5px;
+        box-shadow: none;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Language grid 2 columns on mobile */
+    .language-list {
+        grid-template-columns: 1fr 1fr;
+        max-height: 200px;
+    }
+
+    /* Login menu full width */
+    .login-menu a {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+
+    /* Sign up full width */
+    .nav-right > span {
+        width: 100%;
+        padding: 10px 15px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
