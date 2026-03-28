@@ -32,8 +32,8 @@ public class PageController {
     // ✅ PAYMENT PAGE
     @GetMapping("/payment")
     public String payment(@RequestParam String plan,
-                          HttpSession session,
-                          Model model) {
+            HttpSession session,
+            Model model) {
 
         session.setAttribute("selectedPlan", plan);
         model.addAttribute("plan", plan);
@@ -150,17 +150,17 @@ public class PageController {
     }
 
     // ✅ MY MUSIC PAGE
-    @GetMapping("/my-music")
-    public String myMusic(HttpSession session) {
+    // @GetMapping("/my-music")
+    // public String myMusic(HttpSession session) {
 
-        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+    //     Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
 
-        if (loggedIn != null && loggedIn) {
-            return "my-music";
-        } else {
-            return "redirect:/login";
-        }
-    }
+    //     if (loggedIn != null && loggedIn) {
+    //         return "my-music";
+    //     } else {
+    //         return "redirect:/login";
+    //     }
+    // }
 
     // ✅ HISTORY PAGE
     @GetMapping("/history")
@@ -199,5 +199,62 @@ public class PageController {
         } else {
             return "redirect:/login";
         }
+    }
+
+    // ✅ MUSIC PAGE
+    @GetMapping("/music")
+    public String music(HttpSession session) {
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+        if (loggedIn != null && loggedIn) {
+            return "music";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    // ✅ PODCASTS PAGE
+    @GetMapping("/podcasts")
+    public String podcastsPage(HttpSession session) {
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+        if (loggedIn != null && loggedIn) {
+            return "podcasts";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    @GetMapping("/liked-songs")
+    public String likedSongs() {
+        return "liked-songs";
+    }
+
+    @GetMapping("/signup")
+    public String signupPage() {
+        return "signup";
+    }
+     @GetMapping("/top-charts")
+    public String topCharts() {
+        return "top-charts";
+    }
+
+    @GetMapping("/top-playlist")
+    public String topPlaylists() {
+        return "top-playlist";
+    }
+     @GetMapping("/top-artists")
+    public String topArtists() {
+        return "top-artists";
+    }
+     @GetMapping("/artists")
+    public String Artists() {
+        return "top-artists";
+    }
+  @GetMapping("/release")
+    public String release() {
+        return "release";
+    }
+     @GetMapping("/albums")
+    public String Albums() {
+        return "release";
     }
 }

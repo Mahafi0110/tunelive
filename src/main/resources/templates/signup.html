@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Tune Hive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Itim&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 15px;
+        }
+
+        .signup-wrapper {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        /* LOGO */
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h2 {
+            color: #FF0067;
+            font-family: 'Itim', cursive;
+            font-size: 28px;
+        }
+
+        .logo p {
+            color: #aaa;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* CARD */
+        .signup-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 35px 30px;
+        }
+
+        .signup-card h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* FIELDS */
+        .field-group {
+            margin-bottom: 18px;
+        }
+
+        .field-group label {
+            display: block;
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 7px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #555;
+            font-size: 14px;
+        }
+
+        .input-wrap input {
+            width: 100%;
+            padding: 13px 14px 13px 40px;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-wrap input::placeholder {
+            color: #444;
+        }
+
+        .input-wrap input:focus {
+            border-color: #FF0067;
+            box-shadow: 0 0 0 3px rgba(255, 0, 103, 0.12);
+        }
+
+        /* Password toggle eye */
+        .eye-icon {
+            left: auto !important;
+            right: 14px !important;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .eye-icon:hover {
+            color: #FF0067;
+        }
+
+        /* Error messages */
+        .field-error {
+            color: #ff4d4d;
+            font-size: 11px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Submit button */
+        .signup-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, #FF0067, #ff4d94);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: opacity 0.2s, transform 0.15s;
+            box-shadow: 0 4px 18px rgba(255, 0, 103, 0.35);
+        }
+
+        .signup-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .signup-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+            color: #444;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #222;
+        }
+
+        /* Social buttons */
+        .social-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 11px;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: border-color 0.2s;
+        }
+
+        .social-btn:hover {
+            border-color: #FF0067;
+        }
+
+        .social-btn .fa-google { color: #db4437; }
+        .social-btn .fa-facebook { color: #1877f2; }
+
+        /* Login link */
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .login-link a {
+            color: #FF0067;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Success message */
+        .success-msg {
+            background: rgba(0, 200, 100, 0.1);
+            border: 1px solid #00c864;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            color: #00c864;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .signup-card {
+                padding: 25px 18px;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-wrapper">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <h2>🎵 TUNE HIVE</h2>
+            <p>Create your free account</p>
+        </div>
+
+        <!-- CARD -->
+        <div class="signup-card">
+            <h3>Sign Up</h3>
+
+            <!-- SUCCESS MESSAGE -->
+            <div class="success-msg" id="successMsg">
+                ✅ Account created successfully! Redirecting to login...
+            </div>
+
+            <!-- SOCIAL BUTTONS -->
+            <div class="social-buttons">
+                <button class="social-btn" onclick="window.location.href='/google-login'">
+                    <i class="fa-brands fa-google"></i> Google
+                </button>
+                <button class="social-btn" onclick="window.location.href='/facebook-login'">
+                    <i class="fa-brands fa-facebook"></i> Facebook
+                </button>
+            </div>
+
+            <div class="divider">or sign up with email</div>
+
+            <!-- FORM -->
+            <form id="signupForm">
+
+                <!-- Name -->
+                <div class="field-group">
+                    <label>Full Name</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="fullName" placeholder="Enter your full name">
+                    </div>
+                    <p class="field-error" id="nameError">Please enter your full name</p>
+                </div>
+
+                <!-- Email -->
+                <div class="field-group">
+                    <label>Email Address</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="signupEmail" placeholder="yourname@email.com">
+                    </div>
+                    <p class="field-error" id="emailError">Please enter a valid email address</p>
+                </div>
+
+                <!-- Mobile -->
+                <div class="field-group">
+                    <label>Mobile Number</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                        <input type="text" id="mobile" placeholder="10-digit mobile number" maxlength="10">
+                    </div>
+                    <p class="field-error" id="mobileError">Please enter a valid 10-digit mobile number</p>
+                </div>
+
+                <!-- Password -->
+                <div class="field-group">
+                    <label>Password</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" placeholder="Minimum 6 characters">
+                        <i class="fa-regular fa-eye eye-icon" id="togglePassword"></i>
+                    </div>
+                    <p class="field-error" id="passwordError">Password must be at least 6 characters</p>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="field-group">
+                    <label>Confirm Password</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="confirmPassword" placeholder="Re-enter your password">
+                        <i class="fa-regular fa-eye eye-icon" id="toggleConfirm"></i>
+                    </div>
+                    <p class="field-error" id="confirmError">Passwords do not match</p>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="signup-btn">
+                    <i class="fa-solid fa-user-plus"></i> Create Account
+                </button>
+
+            </form>
+
+            <!-- LOGIN LINK -->
+            <div class="login-link">
+                Already have an account? <a href="/login">Login here</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ===================== PASSWORD TOGGLE =====================
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const pwd = document.getElementById('password');
+            pwd.type = pwd.type === 'password' ? 'text' : 'password';
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        document.getElementById('toggleConfirm').addEventListener('click', function () {
+            const pwd = document.getElementById('confirmPassword');
+            pwd.type = pwd.type === 'password' ? 'text' : 'password';
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // ===================== MOBILE NUMBER — numbers only =====================
+        document.getElementById('mobile').addEventListener('input', function () {
+            this.value = this.value.replace(/\D/g, '').slice(0, 10);
+        });
+
+        // ===================== FORM VALIDATION =====================
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirmPassword').value;
+
+            let valid = true;
+
+            // Reset errors
+            document.querySelectorAll('.field-error').forEach(el => el.style.display = 'none');
+
+            // Name
+            if (name === '' || !/^[a-zA-Z\s]+$/.test(name)) {
+                document.getElementById('nameError').style.display = 'block';
+                valid = false;
+            }
+
+            // Email
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                valid = false;
+            }
+
+            // Mobile
+            if (!/^\d{10}$/.test(mobile)) {
+                document.getElementById('mobileError').style.display = 'block';
+                valid = false;
+            }
+
+            // Password
+            if (password.length < 6) {
+                document.getElementById('passwordError').style.display = 'block';
+                valid = false;
+            }
+
+            // Confirm Password
+            if (password !== confirm) {
+                document.getElementById('confirmError').style.display = 'block';
+                valid = false;
+            }
+
+            if (!valid) return;
+
+            // ✅ Save to localStorage for now
+            const userData = { name, email, mobile };
+            localStorage.setItem('signupUser', JSON.stringify(userData));
+
+            // ✅ Show success message
+            document.getElementById('successMsg').style.display = 'block';
+
+            // ✅ Redirect to login after 2 seconds
+            setTimeout(() => {
+                window.location.href = '/signup-success';
+            }, 2000);
+        });
+    </script>
+
+</body>
+</html>

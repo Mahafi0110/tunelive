@@ -75,8 +75,8 @@
     }
 
     .terms-text {
-        color: black;
-        font-size: 14px;
+        color: #aaa;
+        font-size: 12px;
     }
 
     .checkbox {
@@ -95,7 +95,31 @@
         margin-right: 6px;
         margin: 0;
     }
+.checkbox-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
 
+.checkbox-wrap input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #FF0067;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.checkbox-wrap label {
+    font-size: 13px;
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+}
     .divider {
         text-align: center;
         margin: 20px 0;
@@ -166,131 +190,132 @@
         width: 80%;
         max-width: 400px;
     }
-/* ─── RESPONSIVE ─── */
 
-/* Tablet (max-width: 1024px) */
-@media (max-width: 1024px) {
-    .container {
-        width: 92%;
+    /* ─── RESPONSIVE ─── */
+
+    /* Tablet (max-width: 1024px) */
+    @media (max-width: 1024px) {
+        .container {
+            width: 92%;
+        }
+
+        .login-box {
+            padding: 40px 35px;
+        }
     }
 
-    .login-box {
-        padding: 40px 35px;
-    }
-}
+    /* Small Tablet (max-width: 768px) */
+    @media (max-width: 768px) {
+        body {
+            align-items: flex-start;
+            /* don't force center when content is tall */
+            padding: 30px 15px;
+            height: auto;
+            min-height: 100vh;
+        }
 
-/* Small Tablet (max-width: 768px) */
-@media (max-width: 768px) {
-    body {
-        align-items: flex-start; /* don't force center when content is tall */
-        padding: 30px 15px;
-        height: auto;
-        min-height: 100vh;
-    }
+        .container {
+            flex-direction: column;
+            width: 100%;
+            border-radius: 12px;
+        }
 
-    .container {
-        flex-direction: column;
-        width: 100%;
-        border-radius: 12px;
-    }
+        /* Hide image on tablet */
+        .image-section {
+            display: none;
+        }
 
-    /* Hide image on tablet */
-    .image-section {
-        display: none;
-    }
+        .login-box {
+            padding: 35px 30px;
+        }
 
-    .login-box {
-        padding: 35px 30px;
-    }
-
-    .login-box h1 {
-        font-size: 28px;
-    }
-}
-
-/* Mobile (max-width: 480px) */
-@media (max-width: 480px) {
-    body {
-        padding: 20px 12px;
+        .login-box h1 {
+            font-size: 28px;
+        }
     }
 
-    .container {
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    /* Mobile (max-width: 480px) */
+    @media (max-width: 480px) {
+        body {
+            padding: 20px 12px;
+        }
+
+        .container {
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .login-box {
+            padding: 28px 20px;
+        }
+
+        .login-box h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .login-box input {
+            padding: 12px 14px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .continue-btn {
+            padding: 12px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .terms-text {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .divider {
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        .social-buttons {
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .social-buttons button {
+            padding: 11px;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+
+        .login-link {
+            font-size: 13px;
+            margin-top: 5px;
+        }
     }
 
-    .login-box {
-        padding: 28px 20px;
-    }
+    /* Very small (max-width: 360px) */
+    @media (max-width: 360px) {
+        .login-box {
+            padding: 22px 15px;
+        }
 
-    .login-box h1 {
-        font-size: 24px;
-        margin-bottom: 8px;
-    }
+        .login-box h1 {
+            font-size: 21px;
+        }
 
-    .subtitle {
-        font-size: 13px;
-        margin-bottom: 20px;
+        .login-box input,
+        .continue-btn {
+            padding: 11px 12px;
+            font-size: 13px;
+        }
     }
-
-    .login-box input {
-        padding: 12px 14px;
-        font-size: 14px;
-        margin-bottom: 15px;
-    }
-
-    .continue-btn {
-        padding: 12px;
-        font-size: 14px;
-        margin-bottom: 15px;
-    }
-
-    .terms-text {
-        font-size: 12px;
-        line-height: 1.5;
-        color: #555;
-    }
-
-    .divider {
-        margin: 15px 0;
-        font-size: 13px;
-    }
-
-    .social-buttons {
-        flex-direction: column;
-        gap: 12px;
-        margin-bottom: 15px;
-    }
-
-    .social-buttons button {
-        padding: 11px;
-        font-size: 14px;
-        border-radius: 8px;
-    }
-
-    .login-link {
-        font-size: 13px;
-        margin-top: 5px;
-    }
-}
-
-/* Very small (max-width: 360px) */
-@media (max-width: 360px) {
-    .login-box {
-        padding: 22px 15px;
-    }
-
-    .login-box h1 {
-        font-size: 21px;
-    }
-
-    .login-box input,
-    .continue-btn {
-        padding: 11px 12px;
-        font-size: 13px;
-    }
-}
-
 </style>
 
 <body>
@@ -309,30 +334,35 @@
 
                 <button type="submit" class="continue-btn">Continue</button>
             </form>
-
             <p class="terms-text">
-                Select 'Continue' to give consent to Tune Hire Terms of Service and acknowledge that you have read and
-                understood the Privacy Policy. An SMS may be sent to authenticate your account, and message and data
-                rates may apply.
+                Select 'Continue' to give consent to Tune Hive Terms of Service and acknowledge
+                that you have read and understood the Privacy Policy. An SMS may be sent to
+                authenticate your account, and message and data rates may apply.
             </p>
-            <div class="divider">Or</div>
 
+            <!-- ✅ Checkbox -->
+            <div class="checkbox-wrap">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to all the Terms and Conditions</label>
+            </div>
+            <div class="divider">Or</div>
             <div class="social-buttons">
 
-                <button class="google">
+                <button class="google" onclick="googleLogin()">
                     <i class="fa-brands fa-google"></i> Google
                 </button>
 
-                <button class="facebook">
+                <button class="facebook" onclick="facebookLogin()">
                     <i class="fa-brands fa-facebook"></i> Facebook
                 </button>
-
             </div>
-
-            <p class="login-link">
-                Already have an account? <span>login</span>
-            </p>
-
+            <!-- <p class="login-link" onclick="goLogin()">
+                Already have an account? <a href="/signup">Sign Up</a>
+            </p> -->
+            <!-- LOGIN LINK -->
+            <div class="login-link">
+                Already have an account? <a href="/signup">Sign Up</a>
+            </div>
         </div>
 
 
@@ -348,5 +378,17 @@
     </div>
 
 </body>
+<script>
+    function googleLogin() {
+        window.location.href = "/google-login";
+    }
+
+    function facebookLogin() {
+        window.location.href = "/facebook-login";
+    }
+
+
+
+</script>
 
 </html>

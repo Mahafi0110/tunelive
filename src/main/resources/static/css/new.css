@@ -44,6 +44,7 @@ body {
     flex: 1;
     display: flex;
     justify-content: center;
+       padding: 0 20px;  /* ✅ Add padding left and right */
 }
 
 .nav-right {
@@ -309,6 +310,18 @@ body {
     gap: 10px;
     min-width: 120px;
     justify-content: flex-end;
+}
+.sidebar ul li a {
+    color: #A8A7A7;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.sidebar ul li a:hover {
+    color: #FF0067;
 }
 
 @media (max-width: 576px) {
@@ -585,6 +598,81 @@ body {
 
 /* ===================== TABLET (max-width: 992px) ===================== */
 @media (max-width: 992px) {
+    /* ✅ TABLET NAVBAR FIX */
+.navbar {
+    padding: 8px 15px;
+    height: 55px;
+    gap: 8px;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.logo {
+    font-size: 13px;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.trophy-icon {
+    font-size: 13px;
+}
+
+.nav-left {
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.nav-left .menu {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    background: transparent;
+    padding: 0;
+    gap: 6px;
+    z-index: auto;
+    border: none;
+    width: auto;
+}
+
+.nav-left .menu li {
+    padding: 4px 6px;
+    border-bottom: none;
+    font-size: 11px;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.nav-left .menu li a {
+    font-size: 11px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-center {
+    flex: 1;
+    padding: 0 8px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+.nav-right {
+    gap: 6px;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+.dropdown-toggle {
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.main {
+    margin-top: 55px;
+}
 
     .hamburger {
         display: block;
@@ -592,6 +680,7 @@ body {
 
     .sidebar {
         left: -250px;
+        line-height: 20px;
     }
 
     .sidebar.active {
@@ -605,48 +694,7 @@ body {
         padding-bottom: 80px;
     }
 
-    .navbar {
-        padding: 10px 20px;
-        height: auto;
-    }
-
-    .nav-left .menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 50px;
-        left: 0;
-        width: 100%;
-        background: #000;
-        padding: 10px 0;
-        z-index: 1000;
-        border-bottom: 1px solid #222;
-    }
-
-    .nav-left .menu.active {
-        display: flex !important;
-    }
-
-    .nav-left .menu li {
-        padding: 12px 20px;
-        border-bottom: 1px solid #222;
-        color: #fff;
-    }
-
-    .search-box {
-        width: 200px;
-        padding: 6px 10px;
-    }
-
-    .nav-right {
-        gap: 10px;
-        font-size: 13px;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
+  
     .hero {
         gap: 20px;
     }
@@ -677,10 +725,44 @@ body {
     }
 
     .main {
-        margin-top: 70px;
+        margin-top: 55px;
     }
 }
+/* ===================== SMALL LAPTOP (1024px) ===================== */
+@media (max-width: 1024px) and (min-width: 993px) {
 
+    .navbar {
+        padding: 10px 20px;
+        gap: 10px;
+    }
+
+    .nav-left {
+        gap: 15px;
+    }
+
+    .menu {
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .nav-center {
+        padding: 0 15px;
+    }
+
+    .search-box {
+        width: 280px;
+        padding: 8px 12px;
+    }
+
+    .nav-right {
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .dropdown-toggle {
+        font-size: 13px;
+    }
+}
 /* ===================== MOBILE (max-width: 576px) ===================== */
 @media (max-width: 576px) {
 

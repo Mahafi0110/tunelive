@@ -3,32 +3,38 @@
 
 <body>
 
-          <!-- SIDEBAR -->
-        <aside th:fragment="sidebar" class="sidebar">
+    <!-- SIDEBAR -->
+    <aside th:fragment="sidebar" class="sidebar">
 
-            <h4>BROWSE</h4>
+        <h4>BROWSE</h4>
 
-            <ul>
-                <li>New Release <i class="fa-solid fa-chevron-down"></i></li>
-                <li>Top Charts <i class="fa-solid fa-chevron-down"></i></li>
-                <li>Top Playlists <i class="fa-solid fa-chevron-down"></i></li>
-                <li>Podcasts <i class="fa-solid fa-chevron-down"></i></li>
-                <li>Top Artists <i class="fa-solid fa-chevron-down"></i></li>
-            </ul>
+        <ul>
+            <li><a th:href="@{/release}">New Release <i class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a th:href="@{/top-charts}">Top Charts <i class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a th:href="@{/top-playlist}">Top Playlists <i class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a th:href="@{/podcasts}">Podcasts <i class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a th:href="@{/top-artists}">Top Artists <i class="fa-solid fa-chevron-right"></i></a></li>
+        </ul>
 
-            <h4>LIBRARY</h4>
+        <h4>LIBRARY</h4>
 
-            <ul>
-                <li><i class="fa-solid fa-clock"></i> History</li>
-                <li><i class="fa-solid fa-heart"></i> Liked Songs</li>
-                <li><i class="fa-solid fa-compact-disc"></i> Albums</li>
-                <li><i class="fa-solid fa-podcast"></i> Podcasts</li>
-                <li><i class="fa-solid fa-user"></i> Artists</li>
-            </ul>
+        <ul>
+            <li><a th:href="@{/history}"><i class="fa-solid fa-clock"></i> History</a></li>
+            <li><a th:href="@{/liked-songs}"><i class="fa-solid fa-heart"></i> Liked Songs</a></li>
+            <li><a th:href="@{/release}"><i class="fa-solid fa-compact-disc"></i> Albums</a></li>
+            <li><a th:href="@{/podcasts}"><i class="fa-solid fa-podcast"></i> Podcasts</a></li>
+            <li><a th:href="@{/top-artists}"><i class="fa-solid fa-user"></i> Artists</a></li>
+        </ul>
 
-            <button class="playlist-btn">+ New Playlist</button>
+        <button class="playlist-btn">+ New Playlist</button>
 
-        </aside>
+    </aside>
+    <script>
+        // ✅ New Playlist Button
+document.querySelector('.playlist-btn').addEventListener('click', function() {
+    alert('Playlist feature coming soon!');
+});
+    </script>
 </body>
 
 </html>

@@ -190,9 +190,12 @@
 
             <h1>Enter your 6-Digit Code</h1>
 
-            <p class="subtitle">We”ve send your code to the phone number.
-                +92548 25867 Didn’t get it? Resend the code</p>
-            <!-- ✅ FORM START -->
+            <p class="subtitle">
+    We’ve sent your code to the phone number 
+    <b th:text="${phone}"></b>. 
+    Didn’t get it? Resend the code
+</p>
+
             <!-- ✅ FORM -->
             <form th:action="@{/verify-otp}" method="post">
 
@@ -206,6 +209,10 @@
             <p th:if="${error}" style="color:red; margin-top:10px;">
                 [[${error}]]
             </p>
+            <!-- ✅ TEST MODE — Remove before production -->
+<p th:if="${testOtp}" style="color: #FF0067; margin-top: 10px; font-size: 14px;">
+    🔐 Test OTP: <strong th:text="${testOtp}"></strong>
+</p>
 
             <p class="terms-text">
                 Select ‘Log In” to give consent to Tune hive Terms of service and acknowledge that you have read and

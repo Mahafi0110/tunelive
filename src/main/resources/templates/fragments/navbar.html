@@ -9,8 +9,10 @@
 
         <div class="nav-left">
 
-            <h2 class="logo"><i class="fa-solid fa-trophy trophy-icon"></i>
-                TUNE HIVE</h2>
+            <a th:href="@{/}" style="text-decoration:none;">
+                <h2 class="logo"><i class="fa-solid fa-trophy trophy-icon"></i>
+                    TUNE HIVE</h2>
+            </a>
             <!-- Hamburger for mobile/tablet -->
             <!-- Navbar toggle -->
             <div class="hamburger navbar-toggle">
@@ -18,8 +20,8 @@
             </div>
 
             <ul class="menu">
-                <li>Music <i class="fa-solid fa-chevron-down"></i></li>
-                <li>Podcasts <i class="fa-solid fa-chevron-down"></i></li>
+                <li><a th:href="@{/music}">Music<i class="fa-solid fa-chevron-down"></i></a></li>
+                <li><a th:href="@{/podcasts}">Podcasts<i class="fa-solid fa-chevron-down"></i></a></li>
                 <!-- <li>Pro <i class="fa-solid fa-chevron-down"></i></li> -->
                 <li>
                     <a th:href="@{/plans}">
@@ -61,13 +63,13 @@
                         <label><input type="checkbox" value="bengali"> Bengali</label>
                         <label><input type="checkbox" value="marathi"> Marathi</label>
                         <label><input type="checkbox" value="punjabi"> Punjabi</label>
-                        <label><input type="checkbox" value="gujarati"> Gujarati</label>
+                        <!-- <label><input type="checkbox" value="gujarati"> Gujarati</label>
                         <label><input type="checkbox" value="odia"> Odia</label>
                         <label><input type="checkbox" value="english"> English</label>
                         <label><input type="checkbox" value="korean"> Korean</label>
                         <label><input type="checkbox" value="spanish"> Spanish</label>
                         <label><input type="checkbox" value="french"> French</label>
-                        <label><input type="checkbox" value="japanese"> Japanese</label>
+                        <label><input type="checkbox" value="japanese"> Japanese</label> -->
                     </div>
                     <button class="update-btn">Update</button>
                 </div>
@@ -79,7 +81,7 @@
                 </span>
                 <div class="dropdown-menu login-menu">
                     <a th:href="@{/login}"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-                    <a th:href="@{/my-music}"><i class="fa-solid fa-music"></i> My Music</a>
+                    <a th:href="@{/music}"><i class="fa-solid fa-music"></i> My Music</a>
                     <a th:href="@{/profile}"><i class="fa-solid fa-user"></i> My Profile</a>
                     <a th:href="@{/history}"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
                     <a th:href="@{/settings}"><i class="fa-solid fa-gear"></i> Account Settings</a>
@@ -94,7 +96,9 @@
                 Login <i class="fa-solid fa-chevron-down"></i>
             </a> -->
 
-            <span>Sign Up <i class="fa-solid fa-chevron-down"></i></span>
+            <a th:href="@{/signup}" style="color:#fff; text-decoration:none;">
+                Sign Up <i class="fa-solid fa-user-plus"></i>
+            </a>
 
         </div>
 

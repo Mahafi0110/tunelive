@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Charts - Tune Hive</title>
+    <link rel="stylesheet" th:href="@{/css/new.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Itim&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .chart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #222;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .chart-item:hover { background: rgba(255,0,103,0.1); }
+        .chart-rank {
+            font-size: 22px;
+            font-weight: 700;
+            color: #FF0067;
+            width: 35px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .chart-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .chart-info { flex: 1; }
+        .chart-info h4 { font-size: 14px; margin-bottom: 4px; }
+        .chart-info p { font-size: 12px; color: #aaa; }
+        .chart-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .chart-right span { font-size: 12px; color: #aaa; }
+        .chart-right i { color: #FF0067; font-size: 18px; }
+        .trend-up { color: #00c864 !important; font-size: 12px !important; }
+        .trend-down { color: #ff4d4d !important; font-size: 12px !important; }
+
+        @media (max-width: 576px) {
+            .chart-item { padding: 10px; gap: 10px; }
+            .chart-img { width: 45px; height: 45px; }
+            .chart-rank { font-size: 18px; width: 25px; }
+            .chart-info h4 { font-size: 13px; }
+            .chart-right span { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="main">
+        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+        <section class="content">
+
+            <div class="page-header">
+                <button class="back-btn" onclick="history.back()">
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                </button>
+                <h2>📈 Top Charts</h2>
+            </div>
+
+            <h3 class="section-title">Top 10 Songs Today</h3>
+
+            <div class="chart-item" onclick="playSong('/songs/song1.mp3','Majili','Tanishk Bagchi','/images/song0.png')">
+                <span class="chart-rank">1</span>
+                <img th:src="@{/images/song1.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Majili</h4>
+                    <p>Tanishk Bagchi · Telugu</p>
+                </div>
+                <div class="chart-right">
+                    <span>5:00</span>
+                    <i class="fa-solid fa-arrow-up trend-up"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="chart-item" onclick="playSong('/songs/song2.mp3','Barbad','Various Artists','/images/song1.jpg')">
+                <span class="chart-rank">2</span>
+                <img th:src="@{/images/song2.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Barbad</h4>
+                    <p>Various Artists · Hindi</p>
+                </div>
+                <div class="chart-right">
+                    <span>4:30</span>
+                    <i class="fa-solid fa-arrow-up trend-up"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="chart-item" onclick="playSong('/songs/song3.mp3','Tum Ho Tum','Various Artists','/images/song2.jpg')">
+                <span class="chart-rank">3</span>
+                <img th:src="@{/images/song3.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Tum Ho Tum</h4>
+                    <p>Various Artists · Hindi</p>
+                </div>
+                <div class="chart-right">
+                    <span>4:45</span>
+                    <i class="fa-solid fa-arrow-down trend-down"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="chart-item" onclick="playSong('/songs/song1.mp3','Dhun','Various Artists','/images/song3.jpg')">
+                <span class="chart-rank">4</span>
+                <img th:src="@{/images/song4.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Dhun</h4>
+                    <p>Various Artists · Hindi</p>
+                </div>
+                <div class="chart-right">
+                    <span>5:10</span>
+                    <i class="fa-solid fa-arrow-up trend-up"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="chart-item" onclick="playSong('/songs/song2.mp3','Latest Hindi','Various Artists','/images/song4.jpg')">
+                <span class="chart-rank">5</span>
+                <img th:src="@{/images/song5.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Latest Hindi</h4>
+                    <p>Various Artists · Hindi</p>
+                </div>
+                <div class="chart-right">
+                    <span>4:20</span>
+                    <i class="fa-solid fa-arrow-down trend-down"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="chart-item" onclick="playSong('/songs/song3.mp3','Tamil Hits','Various Artists','/images/song5.jpg')">
+                <span class="chart-rank">6</span>
+                <img th:src="@{/images/song6.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Tamil Hits</h4>
+                    <p>Various Artists · Tamil</p>
+                </div>
+                <div class="chart-right">
+                    <span>3:55</span>
+                    <i class="fa-solid fa-arrow-up trend-up"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="chart-item" onclick="playSong('/songs/song1.mp3','Telugu Melody','Various Artists','/images/song6.jpg')">
+                <span class="chart-rank">7</span>
+                <img th:src="@{/images/song7.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Telugu Melody</h4>
+                    <p>Various Artists · Telugu</p>
+                </div>
+                <div class="chart-right">
+                    <span>4:15</span>
+                    <i class="fa-solid fa-arrow-up trend-up"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="chart-item" onclick="playSong('/songs/song2.mp3','Punjabi Beat','Various Artists','/images/song7.jpg')">
+                <span class="chart-rank">8</span>
+                <img th:src="@{/images/song8.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Punjabi Beat</h4>
+                    <p>Various Artists · Punjabi</p>
+                </div>
+                <div class="chart-right">
+                    <span>3:40</span>
+                    <i class="fa-solid fa-arrow-down trend-down"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="chart-item" onclick="playSong('/songs/song3.mp3','Romantic Hindi','Various Artists','/images/song8.jpg')">
+                <span class="chart-rank">9</span>
+                <img th:src="@{/images/song9.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Romantic Hindi</h4>
+                    <p>Various Artists · Hindi</p>
+                </div>
+                <div class="chart-right">
+                    <span>4:55</span>
+                    <i class="fa-solid fa-arrow-up trend-up"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="chart-item" onclick="playSong('/songs/song1.mp3','Malayalam Hits','Various Artists','/images/song9.jpg')">
+                <span class="chart-rank">10</span>
+                <img th:src="@{/images/song10.jpg}" class="chart-img" alt="song">
+                <div class="chart-info">
+                    <h4>Malayalam Hits</h4>
+                    <p>Various Artists · Malayalam</p>
+                </div>
+                <div class="chart-right">
+                    <span>4:05</span>
+                    <i class="fa-solid fa-arrow-down trend-down"></i>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+            </div>
+
+            <footer class="footer" style="margin-top:40px;">
+                <div class="footer-bottom">
+                    <p>© 2025 Tune Hive Media Limited All rights Reserved</p>
+                    <div class="social-icons">
+                        <i class="fa-brands fa-youtube"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-facebook"></i>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <footer class="player">
+        <div class="player-left">
+            <img id="player-img" src="/images/song0.png" style="width:45px;height:45px;border-radius:8px;object-fit:cover;">
+            <div style="margin-left:10px">
+                <p id="player-title" style="font-size:13px;font-weight:500">Select a song</p>
+                <p id="player-artist" style="font-size:11px;color:#aaa">--</p>
+            </div>
+        </div>
+        <div class="player-center">
+            <div class="controls">
+                <i class="fa-solid fa-backward" id="prevBtn"></i>
+                <i class="fa-solid fa-play" id="playBtn"></i>
+                <i class="fa-solid fa-forward" id="nextBtn"></i>
+            </div>
+            <div class="progress-bar">
+                <span id="current">0:00</span>
+                <input type="range" id="progress" value="0" min="0" max="100" style="flex:1;accent-color:#FF0067;">
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+        <div class="player-right">
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-volume-high"></i>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="1" style="width:80px;accent-color:#FF0067;">
+        </div>
+        <audio id="audio"></audio>
+    </footer>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

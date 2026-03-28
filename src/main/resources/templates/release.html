@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <link rel="stylesheet" th:href="@{/css/new.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .history-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #222;
+            transition: background 0.2s;
+        }
+
+        .history-item:hover {
+            background: rgba(255, 0, 103, 0.1);
+        }
+
+        .history-icon {
+            font-size: 24px;
+            color: #FF0067;
+            flex-shrink: 0;
+        }
+
+        .history-info {
+            flex: 1;
+        }
+
+        .history-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .history-info p {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .history-time {
+            font-size: 12px;
+            color: #aaa;
+            flex-shrink: 0;
+        }
+
+        .empty-msg {
+            text-align: center;
+            color: #aaa;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 576px) {
+            .history-item {
+                padding: 10px 12px;
+                gap: 10px;
+            }
+
+            .history-icon {
+                font-size: 20px;
+            }
+
+            .history-info h4 {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="main">
+        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+        <section class="content">
+            <div class="history-container">
+                <h2 style="margin-bottom: 20px;">New Release of Playlists</h2>
+
+                <div class="history-item">
+                    <i class="fa-solid fa-music history-icon"></i>
+                    <div class="history-info">
+                        <h4>Majili</h4>
+                        <p>Tanishk Bagchi · Telugu</p>
+                    </div>
+                    <span class="history-time">2 mins ago</span>
+                </div>
+
+                <div class="history-item">
+                    <i class="fa-solid fa-music history-icon"></i>
+                    <div class="history-info">
+                        <h4>Barbad</h4>
+                        <p>Various Artists · Hindi</p>
+                    </div>
+                    <span class="history-time">10 mins ago</span>
+                </div>
+
+                <div class="history-item">
+                    <i class="fa-solid fa-music history-icon"></i>
+                    <div class="history-info">
+                        <h4>Tum Ho Tum</h4>
+                        <p>Various Artists · Hindi</p>
+                    </div>
+                    <span class="history-time">25 mins ago</span>
+                </div>
+
+                <div class="history-item">
+                    <i class="fa-solid fa-music history-icon"></i>
+                    <div class="history-info">
+                        <h4>Dhun</h4>
+                        <p>Various Artists · Hindi</p>
+                    </div>
+                    <span class="history-time">1 hour ago</span>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>
